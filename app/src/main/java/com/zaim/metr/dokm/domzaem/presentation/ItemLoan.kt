@@ -1,14 +1,17 @@
 
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,17 +24,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.kredit.onlain.merca.R
-import com.kredit.onlain.merca.R.string
+import com.zaim.metr.dokm.domzaem.R
+import com.zaim.metr.dokm.domzaem.R.string
 import com.zaim.metr.dokm.domzaem.data.VALUE_ONE
 import com.zaim.metr.dokm.domzaem.domain.model.ElementOffer
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Offer
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.BaseState
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.Loan
-import com.kredit.onlain.merca.ui.theme.baseText
-import com.kredit.onlain.merca.ui.theme.white
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnChangeStatusApplication
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
+import com.zaim.metr.dokm.domzaem.ui.theme.baseText
+import com.zaim.metr.dokm.domzaem.ui.theme.borderColor
 
 @Composable
 fun ItemLoan(
@@ -43,16 +46,31 @@ fun ItemLoan(
     Column(
         modifier = modifier
             .shadow(
-                elevation = 40.dp,
-                spotColor = shadow,
-                ambientColor = shadow
+                elevation = 0.dp,
+                spotColor = baseText,
+                ambientColor = baseText
             )
             .fillMaxWidth()
-            //.border(width = 3.dp, color = grey, shape = RoundedCornerShape(15.dp))
-            .clip(shape = RoundedCornerShape(10.dp))
-            .background(color = white)
+            .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(16.dp))
+            .clip(shape = RoundedCornerShape(16.dp))
+            .background(color = baseBackground)
             .padding(16.dp)
     ) {
+        Text(
+            color = baseText,
+            fontStyle = FontStyle(R.font.roboto),
+            fontSize = 18.sp,
+            fontWeight = FontWeight(600),
+            text = loan.name
+        )
+        Spacer(modifier = modifier.height(20.dp))
+        Divider(
+            modifier = modifier
+                .fillMaxWidth(),
+            thickness = 1.dp,
+            color = borderColor
+        )
+        Spacer(modifier = modifier.height(20.dp))
         AsyncImage(
             modifier = modifier
                 .fillMaxWidth()
@@ -88,32 +106,26 @@ fun ItemLoan(
             contentScale = ContentScale.FillWidth,
             contentDescription = ""
         )
-        Spacer(modifier = modifier.height(14.dp))
-        Text(
-            color = baseText,
-            fontStyle = FontStyle(R.font.baloo2),
-            fontSize = 22.sp,
-            fontWeight = FontWeight(500),
-            text = loan.name
-        )
-        /*Row(
-            modifier = modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+        Spacer(modifier = modifier.height(10.dp))
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
         ) {
-            Text(
-                color = black,
-                fontStyle = FontStyle(R.font.soyuz_grotesk_bold),
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Normal,
-                text = loan.name
+            RowData(
+                modifier = modifier.weight(1f),
+                title = stringResource(id = string.amount),
+                content = loan.summPrefix +" " + loan.summMin +" " + loan.summMid +" " + loan.summMax +" " + loan.summPostfix
             )
-            Rang(
-                rang = loan.score
-            )
-        }*/
-        Spacer(modifier = modifier.height(14.dp))
-        RowData(
+            if (loan.hidePercentFields == VALUE_ONE) {
+                Spacer(modifier = modifier.height(8.dp))
+                RowData(
+                    modifier = modifier.weight(1f),
+                    title = stringResource(id = string.bet),
+                    content = loan.percentPrefix +" " + loan.percent +" " + loan.percentPostfix
+                )
+            }
+        }
+        /*RowData(
             title = stringResource(id = string.amount),
             content = loan.summPrefix +" " + loan.summMin +" " + loan.summMid +" " + loan.summMax +" " + loan.summPostfix
         )
@@ -128,8 +140,8 @@ fun ItemLoan(
                 title = stringResource(id = string.term),
                 content = loan.termPrefix +" "+ loan.termMin +" " + loan.termMid +" " + loan.termMax +" " + loan.termPostfix
             )
-        }
-        Spacer(modifier = modifier.height(14.dp))
+        }*/
+        Spacer(modifier = modifier.height(15.dp))
         RowCard(
             showVisa = loan.showVisa,
             showMaster = loan.showMastercard,
@@ -138,7 +150,7 @@ fun ItemLoan(
             showQivi = loan.showQiwi,
             showCache = loan.showCash
         )
-        Spacer(modifier = modifier.height(14.dp))
+        Spacer(modifier = modifier.height(15.dp))
         RowButtons(
             titleOffer = loan.orderButtonText,
             onEvent = onEvent,

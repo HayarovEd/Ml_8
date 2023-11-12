@@ -6,7 +6,6 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.kredit.onlain.merca.presentation.ConnectScreen
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Connect
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Info
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Loading

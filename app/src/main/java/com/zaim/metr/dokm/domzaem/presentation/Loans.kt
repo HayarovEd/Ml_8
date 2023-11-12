@@ -1,5 +1,5 @@
 
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
@@ -17,8 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.BaseState
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.Loan
-import com.kredit.onlain.merca.ui.theme.baseBackground
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
 
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable

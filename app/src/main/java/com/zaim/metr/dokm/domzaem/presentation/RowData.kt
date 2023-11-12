@@ -1,9 +1,12 @@
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,9 +19,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kredit.onlain.merca.R
-import com.kredit.onlain.merca.ui.theme.baseText
-import com.kredit.onlain.merca.ui.theme.white
+import com.zaim.metr.dokm.domzaem.R
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
+import com.zaim.metr.dokm.domzaem.ui.theme.baseText
 
 @Composable
 fun RowData(
@@ -26,27 +29,24 @@ fun RowData(
     title: String,
     content: String
 ) {
-    Row (
+    Column (
         modifier = modifier
-            .fillMaxWidth()
-            .background(color = white)
-            .padding(vertical = 7.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
+            .background(color = baseBackground),
     ) {
         Text(
             color = baseText,
-            fontStyle = FontStyle(R.font.baloo2),
-            fontSize = 16.sp,
+            fontStyle = FontStyle(R.font.roboto),
+            fontSize = 11.sp,
             fontWeight = FontWeight(400),
             text = title,
             textAlign = TextAlign.Start
         )
+        Spacer(modifier = modifier.height(4.dp))
         Text(
             color = baseText,
-            fontStyle = FontStyle(R.font.baloo2),
-            fontSize = 16.sp,
-            fontWeight = FontWeight(600),
+            fontStyle = FontStyle(R.font.roboto),
+            fontSize = 15.sp,
+            fontWeight = FontWeight(700),
             text = content,
             textAlign = TextAlign.End
         )

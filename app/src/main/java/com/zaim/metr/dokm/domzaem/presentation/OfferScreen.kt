@@ -3,6 +3,7 @@ package com.zaim.metr.dokm.domzaem.presentation
 import android.annotation.SuppressLint
 import android.widget.TextView
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -28,6 +28,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
@@ -42,15 +43,16 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import coil.compose.AsyncImage
-import com.kredit.onlain.merca.R
-import com.kredit.onlain.merca.presentation.RowCard
-import com.kredit.onlain.merca.presentation.RowData
+import com.zaim.metr.dokm.domzaem.R
+import com.zaim.metr.dokm.domzaem.R.string
 import com.zaim.metr.dokm.domzaem.data.VALUE_ONE
 import com.zaim.metr.dokm.domzaem.domain.model.ElementOffer
-import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Connect
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.BaseState
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnChangeStatusApplication
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnGoToWeb
+import com.zaim.metr.dokm.domzaem.presentation.MainEvent.Reconnect
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
+import com.zaim.metr.dokm.domzaem.ui.theme.baseText
+import com.zaim.metr.dokm.domzaem.ui.theme.yellow
 
 @SuppressLint("ResourceAsColor")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -70,32 +72,38 @@ fun OfferScreen(
                     containerColor = baseBackground
                 ),
                 title = {
-                    Row(
+                    Column(
                         modifier = modifier
-                            .fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically
+                            .fillMaxWidth()
                     ) {
-                        IconButton(onClick = {
-                            onEvent(
-                                OnChangeStatusApplication(
-                                    Connect(baseState)
-                                )
-                            )
-                        }) {
+                        Row(
+                            modifier = modifier
+                                .clickable { onEvent(Reconnect) },
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
                             Icon(
-                                imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_ios_20),
-                                tint = blue,
+                                imageVector = ImageVector.vectorResource(id = R.drawable.baseline_arrow_back_ios_new_14),
+                                tint = baseText,
                                 contentDescription = ""
                             )
+                            Spacer(modifier = modifier.width(5.dp))
+                            Text(
+                                color = baseText,
+                                fontStyle = FontStyle(R.font.roboto),
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight(400),
+                                text = stringResource(id = R.string.back)
+                            )
                         }
-                        Spacer(modifier = modifier.width(5.dp))
+                        Spacer(modifier = modifier.height(15.dp))
                         Text(
                             color = baseText,
-                            fontStyle = FontStyle(R.font.baloo2),
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight(500),
+                            fontStyle = FontStyle(R.font.roboto),
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight(600),
                             text = elementOffer.name
                         )
+                        Spacer(modifier = modifier.height(15.dp))
                     }
                 }
             )
@@ -107,14 +115,14 @@ fun OfferScreen(
                 Button(
                     modifier = modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 24.dp),
-                    shape = RoundedCornerShape(15.dp),
+                        .shadow(elevation = 0.dp, spotColor = baseText, ambientColor = baseText),
+                    shape = RoundedCornerShape(8.dp),
                     contentPadding = PaddingValues(
-                        vertical = 16.dp
+                        vertical = 17.dp
                     ),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = blue,
-                        contentColor = white,
+                        containerColor = yellow,
+                        contentColor = baseBackground,
                     ),
                     onClick = {
                         onEvent(
@@ -128,13 +136,13 @@ fun OfferScreen(
                     Text(
                         text = stringResource(id = R.string.checkout),
                         style = TextStyle(
-                            fontSize = 26.sp,
-                            fontFamily = FontFamily(Font(R.font.baloo2)),
+                            fontSize = 18.sp,
+                            fontFamily = FontFamily(Font(R.font.roboto)),
                             fontWeight = FontWeight(600),
                         )
                     )
                 }
-                Spacer(modifier = modifier.height(24.dp))
+                Spacer(modifier = modifier.height(15.dp))
             }
         }
     ) { paddingValues ->
@@ -153,11 +161,46 @@ fun OfferScreen(
                 contentScale = ContentScale.FillWidth,
                 contentDescription = ""
             )
-            Spacer(modifier = modifier.height(20.dp))
+            Spacer(modifier = modifier.height(10.dp))
+            RowCard(
+                showVisa = elementOffer.showVisa,
+                showMaster = elementOffer.showMaster,
+                showYandex = elementOffer.showYandex,
+                showMir = elementOffer.showMir,
+                showQivi = elementOffer.showQiwi,
+                showCache = elementOffer.showCache
+            )
+            Spacer(modifier = modifier.height(15.dp))
+            Row(
+                modifier = modifier
+                    .fillMaxWidth()
+            ) {
+                RowData(
+                    modifier = modifier.weight(1f),
+                    title = stringResource(id = string.amount),
+                    content = elementOffer.amount
+                )
+                if (elementOffer.showPercent == VALUE_ONE) {
+                    Spacer(modifier = modifier.height(8.dp))
+                    RowData(
+                        modifier = modifier.weight(1f),
+                        title = stringResource(id = string.bet),
+                        content = elementOffer.bet
+                    )
+                }
+            }
+            /*if (elementOffer.showTerm == VALUE_ONE) {
+                Spacer(modifier = modifier.height(8.dp))
+                RowData(
+                    title = stringResource(id = string.term),
+                    content = elementOffer.term
+                )
+            }*/
+            Spacer(modifier = modifier.height(15.dp))
             AndroidView(
                 modifier = modifier
                     .fillMaxWidth()
-                    .background(color = white),
+                    .background(color = baseBackground),
                 factory = { context -> TextView(context) },
                 update = {
                     it.setTextColor(R.color.white)
@@ -166,34 +209,6 @@ fun OfferScreen(
                         HtmlCompat.FROM_HTML_MODE_COMPACT
                     )
                 }
-            )
-            Spacer(modifier = modifier.height(31.dp))
-            RowData(
-                title = stringResource(id = R.string.amount),
-                content = elementOffer.amount
-            )
-            if (elementOffer.showPercent == VALUE_ONE) {
-                Spacer(modifier = modifier.height(8.dp))
-                RowData(
-                    title = stringResource(id = R.string.bet),
-                    content = elementOffer.bet
-                )
-            }
-            if (elementOffer.showTerm == VALUE_ONE) {
-                Spacer(modifier = modifier.height(8.dp))
-                RowData(
-                    title = stringResource(id = R.string.term),
-                    content = elementOffer.term
-                )
-            }
-            Spacer(modifier = modifier.height(21.dp))
-            RowCard(
-                showVisa = elementOffer.showVisa,
-                showMaster = elementOffer.showMaster,
-                showYandex = elementOffer.showYandex,
-                showMir = elementOffer.showMir,
-                showQivi = elementOffer.showQiwi,
-                showCache = elementOffer.showCache
             )
         }
     }

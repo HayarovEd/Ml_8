@@ -11,7 +11,7 @@
     <string name="amount">Amount:</string>
     <string name="bet">Rate:</string>
     <string name="term">Term:</string>
-    <string name="checkout">Apply</string>
+    <string name="checkout">Fill In</string>
     <string name="details">Details</string>
     <string name="back">Back</string>
 </resources>
