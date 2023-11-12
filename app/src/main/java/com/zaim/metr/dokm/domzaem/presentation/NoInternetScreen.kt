@@ -79,7 +79,12 @@ fun NoInternetScreen(
         Button(
             modifier = modifier
                 .fillMaxWidth()
-                .shadow(elevation = 0.dp, spotColor = baseText, ambientColor = baseText)
+                .shadow(
+                    elevation = 5.dp,
+                    shape = RoundedCornerShape(10.dp),
+                    spotColor = baseText,
+                    ambientColor = baseText
+                )
                 .align(alignment = Alignment.BottomCenter),
             shape = RoundedCornerShape(8.dp),
             contentPadding = PaddingValues(

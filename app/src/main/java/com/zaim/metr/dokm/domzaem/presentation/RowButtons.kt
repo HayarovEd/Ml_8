@@ -115,8 +115,13 @@ fun RowButtons(
         Box(
             modifier = modifier
                 .weight(1f)
+                .shadow(
+                    elevation = 5.dp,
+                    shape = RoundedCornerShape(10.dp),
+                    spotColor = baseText,
+                    ambientColor = baseText
+                )
                 .clip(shape = RoundedCornerShape(10.dp))
-                .shadow(elevation = 0.dp, spotColor = baseText, ambientColor = baseText)
                 .background(color = yellow)
                 .clickable(onClick = {
                     onEvent(

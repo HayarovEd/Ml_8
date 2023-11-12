@@ -45,12 +45,13 @@ fun ItemLoan(
 ) {
     Column(
         modifier = modifier
+            .fillMaxWidth()
             .shadow(
-                elevation = 0.dp,
+                elevation = 10.dp,
+                shape = RoundedCornerShape(16.dp),
                 spotColor = baseText,
                 ambientColor = baseText
             )
-            .fillMaxWidth()
             .border(width = 1.dp, color = borderColor, shape = RoundedCornerShape(16.dp))
             .clip(shape = RoundedCornerShape(16.dp))
             .background(color = baseBackground)

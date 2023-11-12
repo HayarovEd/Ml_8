@@ -112,7 +112,12 @@ fun OfferScreen(
                 Button(
                     modifier = modifier
                         .fillMaxWidth()
-                        .shadow(elevation = 0.dp, spotColor = baseText, ambientColor = baseText),
+                        .shadow(
+                            elevation = 5.dp,
+                            shape = RoundedCornerShape(10.dp),
+                            spotColor = baseText,
+                            ambientColor = baseText
+                        ),
                     shape = RoundedCornerShape(8.dp),
                     contentPadding = PaddingValues(
                         vertical = 17.dp
