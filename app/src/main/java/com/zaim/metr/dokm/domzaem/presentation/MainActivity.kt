@@ -99,11 +99,9 @@ class MainActivity : ComponentActivity() {
         AppsFlyerLib.getInstance().init(APPS_FLYER, conversionDataListener, this)
         AppsFlyerLib.getInstance().start(this)
         setContent {
-            Ml_8Theme {
-                Sample(
-                    viewModel = viewModel,
-                )
-            }
+            Sample(
+                viewModel = viewModel,
+            )
         }
     }
 

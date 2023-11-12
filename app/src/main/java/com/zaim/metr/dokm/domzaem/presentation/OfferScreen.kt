@@ -47,9 +47,9 @@ import com.zaim.metr.dokm.domzaem.R
 import com.zaim.metr.dokm.domzaem.R.string
 import com.zaim.metr.dokm.domzaem.data.VALUE_ONE
 import com.zaim.metr.dokm.domzaem.domain.model.ElementOffer
+import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.BaseState
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnGoToWeb
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent.Reconnect
 import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
 import com.zaim.metr.dokm.domzaem.ui.theme.baseText
 import com.zaim.metr.dokm.domzaem.ui.theme.yellow
@@ -78,7 +78,13 @@ fun OfferScreen(
                     ) {
                         Row(
                             modifier = modifier
-                                .clickable { onEvent(Reconnect) },
+                                .clickable {
+                                    onEvent(
+                                        MainEvent.OnChangeStatusApplication(
+                                            StatusApplication.Connect(baseState)
+                                        )
+                                    )
+                                },
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
@@ -92,18 +98,9 @@ fun OfferScreen(
                                 fontStyle = FontStyle(R.font.roboto),
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight(400),
-                                text = stringResource(id = R.string.back)
+                                text = stringResource(id = string.back)
                             )
                         }
-                        Spacer(modifier = modifier.height(15.dp))
-                        Text(
-                            color = baseText,
-                            fontStyle = FontStyle(R.font.roboto),
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight(600),
-                            text = elementOffer.name
-                        )
-                        Spacer(modifier = modifier.height(15.dp))
                     }
                 }
             )
@@ -134,7 +131,7 @@ fun OfferScreen(
                     }
                 ) {
                     Text(
-                        text = stringResource(id = R.string.checkout),
+                        text = stringResource(id = string.checkout),
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontFamily = FontFamily(Font(R.font.roboto)),
@@ -154,6 +151,14 @@ fun OfferScreen(
                 .padding(horizontal = 20.dp)
                 .verticalScroll(rememberScrollState()),
         ) {
+            Text(
+                color = baseText,
+                fontStyle = FontStyle(R.font.roboto),
+                fontSize = 24.sp,
+                fontWeight = FontWeight(600),
+                text = elementOffer.name
+            )
+            Spacer(modifier = modifier.height(24.dp))
             AsyncImage(
                 modifier = modifier
                     .fillMaxWidth(),
