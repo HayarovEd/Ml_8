@@ -17,7 +17,6 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
-import com.kredit.onlain.merca.presentation.Sample
 import com.my.tracker.MyTracker
 import dagger.hilt.android.AndroidEntryPoint
 import com.zaim.metr.dokm.domzaem.data.APPS_FLYER

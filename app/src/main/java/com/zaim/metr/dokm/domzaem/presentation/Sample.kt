@@ -1,4 +1,4 @@
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.kredit.onlain.merca.presentation.ConnectScreen
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Connect
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Info
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Loading
@@ -14,7 +15,6 @@ import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.NoConnect
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Offer
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Splash
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Web
-import com.zaim.metr.dokm.domzaem.presentation.MainViewModel
 
 @RequiresApi(Build.VERSION_CODES.TIRAMISU)
 @Composable

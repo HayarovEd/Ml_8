@@ -1,4 +1,4 @@
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import android.annotation.SuppressLint
 import android.widget.TextView
@@ -43,15 +43,12 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.text.HtmlCompat
 import coil.compose.AsyncImage
 import com.kredit.onlain.merca.R
+import com.kredit.onlain.merca.presentation.RowCard
+import com.kredit.onlain.merca.presentation.RowData
 import com.zaim.metr.dokm.domzaem.data.VALUE_ONE
 import com.zaim.metr.dokm.domzaem.domain.model.ElementOffer
 import com.zaim.metr.dokm.domzaem.domain.model.StatusApplication.Connect
 import com.zaim.metr.dokm.domzaem.domain.model.basedto.BaseState
-import com.kredit.onlain.merca.ui.theme.baseBackground
-import com.kredit.onlain.merca.ui.theme.baseText
-import com.kredit.onlain.merca.ui.theme.blue
-import com.kredit.onlain.merca.ui.theme.white
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnChangeStatusApplication
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.OnGoToWeb
 

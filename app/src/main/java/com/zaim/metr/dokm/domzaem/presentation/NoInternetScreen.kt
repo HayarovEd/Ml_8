@@ -1,4 +1,4 @@
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -18,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -29,13 +30,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.kredit.onlain.merca.R
-import com.kredit.onlain.merca.ui.theme.baseBackground
-import com.kredit.onlain.merca.ui.theme.baseText
-import com.kredit.onlain.merca.ui.theme.blue
-import com.kredit.onlain.merca.ui.theme.white
-import com.zaim.metr.dokm.domzaem.presentation.MainEvent
+import com.zaim.metr.dokm.domzaem.R
 import com.zaim.metr.dokm.domzaem.presentation.MainEvent.Reconnect
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
+import com.zaim.metr.dokm.domzaem.ui.theme.baseText
+import com.zaim.metr.dokm.domzaem.ui.theme.secondText
+import com.zaim.metr.dokm.domzaem.ui.theme.yellow
 
 @Composable
 fun NoInternetScreen(
@@ -53,48 +53,49 @@ fun NoInternetScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Image(
-                modifier = modifier.size(90.dp),
+                modifier = modifier.size(80.dp),
                 painter = painterResource(
-                id = R.drawable.no_connect),
+                id = R.drawable.no_connection),
                 contentDescription = "")
-            Spacer(modifier = modifier.height(45.dp))
+            Spacer(modifier = modifier.height(15.dp))
             Text(
                 text = stringResource(id = R.string.not_connect),
-                fontSize = 24.sp,
-                fontWeight = FontWeight(500),
-                fontStyle = FontStyle(R.font.baloo2),
+                fontSize = 18.sp,
+                fontWeight = FontWeight(600),
+                fontStyle = FontStyle(R.font.roboto),
                 color = baseText,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = modifier.height(30.dp))
+            Spacer(modifier = modifier.height(15.dp))
             Text(
                 text = stringResource(id = R.string.try_internet),
-                fontSize = 18.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight(400),
-                fontStyle = FontStyle(R.font.baloo2),
-                color = baseText,
+                fontStyle = FontStyle(R.font.roboto),
+                color = secondText,
                 textAlign = TextAlign.Center
             )
         }
         Button(
             modifier = modifier
                 .fillMaxWidth()
+                .shadow(elevation = 0.dp, spotColor = baseText, ambientColor = baseText)
                 .align(alignment = Alignment.BottomCenter),
-            shape = RoundedCornerShape(15.dp),
+            shape = RoundedCornerShape(8.dp),
             contentPadding = PaddingValues(
-                vertical = 16.dp
+                vertical = 17.dp
             ),
             colors = ButtonDefaults.buttonColors(
-                containerColor = blue,
-                contentColor = white,
+                containerColor = yellow,
+                contentColor = baseBackground,
             ),
             onClick = { onEvent(Reconnect) }
         ) {
             Text(
                 text = stringResource(id = R.string.reconnect),
                 style = TextStyle(
-                    fontSize = 26.sp,
-                    fontFamily = FontFamily(Font(R.font.baloo2)),
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily(Font(R.font.roboto)),
                     fontWeight = FontWeight(600),
                 )
             )

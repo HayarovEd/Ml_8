@@ -1,4 +1,4 @@
-package com.kredit.onlain.merca.presentation
+package com.zaim.metr.dokm.domzaem.presentation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.kredit.onlain.merca.ui.theme.baseBackground
-import com.kredit.onlain.merca.ui.theme.blue
+import com.zaim.metr.dokm.domzaem.ui.theme.baseBackground
+import com.zaim.metr.dokm.domzaem.ui.theme.blue
 
 @Composable
 fun LoadingScreen(
