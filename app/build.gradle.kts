@@ -23,21 +23,21 @@ android {
         }
     }
 
-    /*signingConfigs {
+    signingConfigs {
         getByName("debug") {
-            storeFile = file("ID524.keystore")
+            storeFile = file("ID525.keystore")
             keyAlias = "mypass"
-            storePassword = "com.kredit.onlain.merca"
-            keyPassword = "com.kredit.onlain.merca"
+            storePassword = "com.zaim.metr.dokm.domzaem"
+            keyPassword = "com.zaim.metr.dokm.domzaem"
         }
         create("release") {
             keyAlias = "mypass"
-            keyPassword = "com.kredit.onlain.merca"
-            storeFile = file("ID524.keystore")
-            storePassword = "com.kredit.onlain.merca"
+            keyPassword = "com.zaim.metr.dokm.domzaem"
+            storeFile = file("ID525.keystore")
+            storePassword = "com.zaim.metr.dokm.domzaem"
             enableV2Signing = true
         }
-    }*/
+    }
 
     buildTypes {
         release {
@@ -46,10 +46,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-                //signingConfig = signingConfigs.getByName("release")
+                signingConfig = signingConfigs.getByName("release")
         }
         debug {
-            //signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
