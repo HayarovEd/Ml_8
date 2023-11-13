@@ -49,7 +49,7 @@ const val CHANNEL_NAME = "Firebase Channel"
 const val LINK = "link"
 const val TAG = "AppTag"
 
-const val APP_ID_HMS = "109594491"
+const val APP_ID_HMS = "109615829"
 
 const val KEY1 = "key1"
 const val KEY2 = "key2"

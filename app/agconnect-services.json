@@ -26,21 +26,21 @@
 		"SG_back":"connect-ws-dra.hispace.dbankcloud.com"
 	},
 	"client":{
-		"cp_id":"10063000029441169",
-		"product_id":"388421841221776114",
-		"client_id":"1286318808516059584",
-		"client_secret":"93F4851DE756A05FCB12481E875EF6C86EAD310C2236852B82FE37F5398BBD69",
-		"project_id":"388421841221776114",
-		"app_id":"109594491",
-		"api_key":"DAEDAJE6Ty4vuyT6jZEEIxls51Qmn1U9beIzZs2uG31KB0N6JhORnkgRiYGedq8ry0Uk01jqEroeTiG+DQc56+h9ZOaiu3kMWm6wQw==",
-		"package_name":"com.kredit.onlain.merca"
+		"cp_id":"10063000029459774",
+		"product_id":"388421841221779750",
+		"client_id":"1288560674380767680",
+		"client_secret":"1B3CFA390BF26D43457BC1CB6F837D44D2F5670EDB30729726143C8B50BDC2ED",
+		"project_id":"388421841221779750",
+		"app_id":"109615829",
+		"api_key":"DAEDAM8k8zYTOZVNEn4vweW/YY0i6pF/SwjZi9kF/nAIwqOzQ9qqDt9nAYYXXShyy8/l2kNk7ww69NREoHPgS5muOB/ANcvNyc44jg==",
+		"package_name":"com.zaim.metr.dokm.domzaem"
 	},
 	"oauth_client":{
-		"client_id":"109594491",
+		"client_id":"109615829",
 		"client_type":1
 	},
 	"app_info":{
-		"app_id":"109594491",
+		"app_id":"109615829",
 		"package_name":"com.zaim.metr.dokm.domzaem"
 	},
 	"service":{
@@ -81,15 +81,15 @@
 		{
 			"package_name":"com.zaim.metr.dokm.domzaem",
 			"client":{
-				"app_id":"109594491"
+				"app_id":"109615829"
 			},
 			"app_info":{
 				"package_name":"com.zaim.metr.dokm.domzaem",
-				"app_id":"109594491"
+				"app_id":"109615829"
 			},
 			"oauth_client":{
 				"client_type":1,
-				"client_id":"109594491"
+				"client_id":"109615829"
 			}
 		}
 	]
